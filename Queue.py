@@ -23,10 +23,15 @@ class Queue:
     def size(self):
         return len(self.items)
     
+    def view_queue(self):
+        return self.items
+    
 queue = Queue()
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
+
+print("Current queue:",queue.view_queue())
 
 print("Queue size:", queue.size())
 print("Front element:", queue.peek())
