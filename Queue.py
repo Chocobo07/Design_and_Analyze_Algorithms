@@ -39,4 +39,4 @@ print("Is queue empty?", queue.is_empty())
 print("Dequed element:", queue.dequeue())
 print("Is queue empty?", queue.is_empty())
 
-print("Dequed Element:", queue.dequeue)
+print("Dequed Element:", queue.dequeue())
