@@ -8,6 +8,7 @@
     Trees
 
 **Singly Linked list:**
+
 A Singly Linked List is a data structure that consists of a sequence of elements called nodes. Each node contains:
 
 Data: The actual value stored in the node.
@@ -16,13 +17,16 @@ In a singly linked list, each node points only to the next node, and the last no
 ![alt text](image.png)
 
 **Advantages:**
+
 Dynamic size: It can grow or shrink as needed without pre-allocating space.
 Efficient insertion/deletion at the beginning or middle (compared to arrays).
+
 **Disadvantages:**
 No direct access to elements (sequential access).
 More memory used because each node stores a pointer.
 
 **Code Snippet:**
+
 class Node:
     def __init__(self, data):
         self.data = data  # Data stored in the node
@@ -51,29 +55,44 @@ class SinglyLinkedList:
         print("None")  # Print "None" to indicate the end of the list
 
 linklist = SinglyLinkedList()
+
 linklist.append("Fool")
+
 linklist.append("Manila Bay")
+
 linklist.append("Feel so good")
+
 linklist.display()  # Output: Fool -> Manila Bay -> Feel so good -> None
 
 **Use case:**
+
 A song playlist, you can easily add or remove a song in the playlist. Each song points to the next one just like the output on the code.
 
  -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Doubly Linked List:**
+
 A Doubly Linked List is a data structure similar to a singly linked list, but with an additional feature:
 
 Each node contains two pointers:
+
 Next: Points to the next node in the list.
+
 Prev: Points to the previous node in the list.
+
 This allows traversal in both directions (forward and backward).
+
 ![alt text](image-1.png)
 
 **Advantages:**
+
 Bidirectional traversal: Can easily traverse both forward and backward.
+
 Efficient deletion/insertion: Easy to insert or delete nodes from both ends or in the middle, without needing to traverse the list.
+
 **Disadvantages:**
+
 Extra memory: Each node uses extra memory to store the Prev pointer.
+
 Slightly more complex operations due to handling two pointers.
 
 **Code snippet:**
@@ -128,32 +147,46 @@ class DoublyLinkedList:
         print("None")          # Mark the end of the list
 
 **Use case:**
+
 A song or a playlist you can play the next song or the previous song. A web browser history you can go to the next url or the previous url.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Cirular Linked List**
+
 A Circular Linked List is a variation of a linked list where:
 
 The last node points back to the first node instead of having a null reference.
+
 This creates a circular structure, where you can loop through the list continuously from any node.
+
 Circular linked lists can be singly or doubly linked, depending on whether each node contains one or two pointers (next and/or prev).
+
 ![alt text](image-3.png)
 
 **Advantages:**
+
 Efficient circular traversal: You can easily traverse the list in a loop, which is useful in applications like round-robin scheduling.
 No need for null pointers: The structure is self-referential, so no null pointers are required to mark the end.
+
 Efficient for continuous operations: Especially useful for problems involving cycles or repeated operations.
+
 **Disadvantages:**
+
 Complexity: Slightly more complex to manage due to circular references.
+
 Memory management: Can be tricky in cases of frequent insertion/deletion, especially when loops are involved.
 
+**Code snippet:**
+
 class Node:
+
     def __init__(self, data):
         self.data = data      # Data stored in the node
         self.next = None      # Pointer to the next node (initially None)
 
 class CircularLinkedList:
+
     def __init__(self):
         self.head = None      # Head of the list (initially None)
 
@@ -185,9 +218,13 @@ class CircularLinkedList:
 
 # Example Usage (explained below):
 cll = CircularLinkedList()
+
 cll.append("Fool")
+
 cll.append("Manila Bay")
+
 cll.append("Feel so good")
+
 cll.display()  # Output: Fool -> Manila Bay -> Feel so good -> None
 
 
@@ -221,19 +258,29 @@ cll.display()  # Output: Fool -> Manila Bay -> Feel so good -> None
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Queue**
+
 A Queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means that the first element added to the queue will be the first one to be removed, similar to a queue in real life (like a line at a coffee shop).
+
 ![alt text](image-4.png)
 
 **Advantages:**
+
 Simple and efficient for managing sequential data.
+
 Ensures fair processing with FIFO order.
+
 Useful for handling tasks in various applications like IO buffering or task scheduling.
+
 **Disadvantages:**
+
 Limited access: Only the front element can be accessed directly.
+
 Fixed size (in some implementations), which may require resizing or cause overflow.
 
 **Code snippet:**
+
 class Queue:
+
     def __init__(self):
         self.items = []  # Use a list to store queue elements
 
@@ -262,22 +309,29 @@ class Queue:
         return self.items  # Return the queue as a list
 
 # Example usage (explained below):
+
 queue = Queue()
+
 queue.enqueue(1)
+
 queue.enqueue(2)
+
 queue.enqueue(3)
 
 print("Current queue:", queue.view_queue())  # Output: Current queue: [1, 2, 3]
 
 print("Queue size:", queue.size())  # Output: Queue size: 3
+
 print("Front element:", queue.peek())  # Output: Front element: 1
 
 print("Dequeued element:", queue.dequeue())  # Output: Dequeued element: 1
+
 print("Dequeued element:", queue.dequeue())  # Output: Dequeued element: 2
 
 print("Is queue empty?", queue.is_empty())  # Output: Is queue empty? False
 
 print("Dequeued element:", queue.dequeue())  # Output: Dequeued element: 3
+
 print("Is queue empty?", queue.is_empty())  # Output: Is queue empty? True
 
 print("Dequeued Element:", queue.dequeue())  # Output: Dequeued Element: None
@@ -323,23 +377,33 @@ print("Dequeued Element:", queue.dequeue())  # Output: Dequeued Element: None
 #     - Tries to dequeue from an empty queue.  Returns None.
 
 **Use case:**
+
 A line of people ordering in a coffee shop, The first one in the line will be the first one to order and get out of the line, if a new customer will order he/she needs to be at the end of  the line becoming the tail.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Stack**
+
 A Stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means the last element added to the stack is the first one to be removed, similar to a stack of plates where you take the top plate first.
+
 ![alt text](image-2.png)
 
 **Advantages:**
+
 Simple and efficient for operations like adding/removing from the top.
+
 Useful for problems that need to track the order of operations in a reversible manner.
+
 **Disadvantages:**
+
 Limited access: You can only access the top element, not the ones below it.
+
 Fixed size (in some implementations), leading to overflow when the stack is full.
 
 **Code snippet:**
+
 class Stack:
+
     def __init__(self):
         self.items = []  # Use a list to store stack elements
 
@@ -369,22 +433,29 @@ class Stack:
 
 
 # Example usage (explained below):
+
 stack = Stack()
+
 stack.push(1)
+
 stack.push(2)
+
 stack.push(3)
 
 print("Current Stack:", stack.view_stack())  # Output: Current Stack: [1, 2, 3]
 
 print("Stack size:", stack.size())  # Output: Stack size: 3
+
 print("Top element:", stack.peek())  # Output: Top element: 3
 
 print("Popped element:", stack.pop())  # Output: Popped element: 3
+
 print("Popped element:", stack.pop())  # Output: Popped element: 2
 
 print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? False
 
 print("Popped element:", stack.pop())  # Output: Popped element: 1
+
 print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? True
 
 print("Popped element:", stack.pop())  # Output: Popped element: None
@@ -430,28 +501,39 @@ print("Popped element:", stack.pop())  # Output: Popped element: None
 #     - Tries to pop from an empty stack. Returns None.
 
 **Use case:**
+
 A stack of books, to get the book at the bottom, you need to remove the books at the top first, otherwise the stack will collapse.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Heap**
+
 A Heap is a special type of binary tree that satisfies the heap property. There are two main types of heaps:
 
 Max Heap: The value of each node is greater than or equal to the values of its children. The largest value is at the root.
+
 Min Heap: The value of each node is less than or equal to the values of its children. The smallest value is at the root.
+
 ![alt text](image-6.png)
 
 **Advantages:**
+
 Efficient Insertion and Deletion: Insertion and deletion (extracting max or min) are done in O(log n) time.
+
 Balanced Structure: As a complete binary tree, heaps are balanced, ensuring efficient operations.
+
 **Disadvantages:**
+
 Not Efficient for Search: Searching for arbitrary elements is O(n) since there’s no ordering for arbitrary nodes.
+
 Limited Access: Only the root node can be accessed directly; other elements require traversal.
 
 **Code snippet:**
+
 import heapq
 
 class MinHeap:
+
     def __init__(self):
         self.heap = []  # Use a list to store heap elements
 
@@ -477,20 +559,29 @@ class MinHeap:
         return len(self.heap) == 0
 
 # Example usage (explained below):
+
 min_heap = MinHeap()
+
 min_heap.push(5)
+
 min_heap.push(1)
+
 min_heap.push(9)
+
 min_heap.push(2)
 
 print("Heap size:", min_heap.size())       # Output: Heap size: 4
+
 print("Smallest element:", min_heap.peek())  # Output: Smallest element: 1
 
 print("Is heap empty?", min_heap.is_empty())  # Output: Is heap empty? False
 
 print("Popped element:", min_heap.pop())     # Output: Popped element: 1
+
 print("Popped element:", min_heap.pop())     # Output: Popped element: 2
+
 print("Is heap empty?", min_heap.is_empty())  # Output: Is heap empty? False
+
 print("Popped element:", min_heap.pop())     # Output: Popped element: 5
 
 
@@ -547,22 +638,34 @@ print("Popped element:", min_heap.pop())     # Output: Popped element: 5
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Graph**
+
 A Graph is a non-linear data structure used to represent relationships between objects. It consists of:
 
 Vertices (Nodes): The entities or points in the graph.
+
 Edges (Links): The connections between the vertices.
+
 Graphs can represent complex structures like social networks, transportation systems, or computer networks.
+
 ![alt text](image-7.png)
 
 **Advantages:**
+
 Versatile Representation: Graphs can model a wide variety of real-world systems.
+
 Efficient Search: Algorithms like BFS and DFS allow quick searches and analysis of graph structures.
+
 **Disadvantages:**
+
 Complexity: Graphs can become complex and difficult to manage with many vertices and edges.
+
 Memory Usage: Representing large graphs can require significant memory (especially with adjacency matrices).
 
+
 **Code snippet:**
+
 class Graph:
+
     def __init__(self, adjacency_list=None):  # Corrected typo: adjency_list to adjacency_list
         if adjacency_list is None:
             self.adjacency_list = {}  # Dictionary to store adjacency list
@@ -588,22 +691,31 @@ class Graph:
 
 
 # Example usage (explained below):
+
 graph = Graph()
+
 graph.add_vertex("Spongebob")
+
 graph.add_vertex("Patrick")
+
 graph.add_vertex("Squidward")
 
 graph.add_edge("Spongebob", "Patrick")
+
 graph.add_edge("Spongebob", "Squidward")
+
 graph.add_edge("Patrick", "Squidward")
 
+
 graph.print_graph()
+
 # Output:
 # Spongebob: Patrick, Squidward
 # Patrick: Squidward
 # Squidward: 
 
 print(graph.get_neighbors("Spongebob"))  # Output: ['Patrick', 'Squidward']
+
 print(graph.get_neighbors("Plankton"))  # Output: [] (empty list, no neighbors)
 
 
@@ -659,28 +771,45 @@ print(graph.get_neighbors("Plankton"))  # Output: [] (empty list, no neighbors)
 #    - Returns an empty list [] because "Plankton" is not in the graph.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Tree**
+
 A Tree is a hierarchical data structure that consists of nodes connected by edges. It is used to represent hierarchical relationships, such as file systems, organization charts, or decision-making processes.
 
 **Basic Components of a Tree:**
+
 **Node:** An individual element in the tree that holds data.
+
 **Root:** The top node of the tree, from which all other nodes are descendants.
+
 **Parent:** A node that has one or more children.
+
 **Child:** A node that is a descendant of another node (parent).
+
 **Leaf:** A node with no children (end node).
+
 **Edge:** The connection between two nodes.
+
 **Subtree:** A tree formed by a node and its descendants.
+
 ![alt text](image-8.png)
 
 **Advantages:**
+
 Efficient Search and Sort: Operations like search, insertion, and deletion are efficient, especially in balanced trees.
+
 Hierarchical Representation: Ideal for modeling hierarchical structures.
+
 Flexibility: Trees can represent a wide range of problems, from file systems to decision-making processes.
+
 **Disadvantages:**
+
 Complexity: Trees can be complex to implement and manage, especially when balancing is required.
+
 Memory Usage: Storing trees can require more memory than simpler data structures like arrays or lists.
 
 **Code snippet:**
+
 class TreeNode:
+
     def __init__(self, data):
         self.data = data      # Data stored in the node
         self.children = []  # List to store child nodes (initially empty)
@@ -692,34 +821,49 @@ class TreeNode:
         return str(self.data)
 
 def print_tree(node, level=0):
+
     print("  " * level + str(node.data))  # Print node data with indentation
     for child in node.children:  # Recursively print each child's subtree
         print_tree(child, level + 1)  # Increase indentation level for children
 
 # Example usage (explained below):
+
 root = TreeNode("Electronics")  # Create the root node
 
 laptop = TreeNode("Laptop")  # Create a Laptop node
+
 phone = TreeNode("Phone")    # Create a Phone node
+
 tv = TreeNode("TV")        # Create a TV node
 
 root.add_child(laptop)  # Add Laptop as a child of Electronics
+
 root.add_child(phone)    # Add Phone as a child of Electronics
+
 root.add_child(tv)        # Add TV as a child of Electronics
 
 dell = TreeNode("Dell")    # Create a Dell node
+
 hp = TreeNode("HP")      # Create an HP node
+
 laptop.add_child(dell)  # Add Dell as a child of Laptop
+
 laptop.add_child(hp)    # Add HP as a child of Laptop
 
 iphone = TreeNode("Iphone")  # Create an Iphone node
+
 android = TreeNode("Android")  # Create an Android node
+
 phone.add_child(iphone)  # Add Iphone as a child of Phone
+
 phone.add_child(android)  # Add Android as a child of Phone
 
 samsung = TreeNode("Samsung")  # Create a Samsung node
+
 lg = TreeNode("LG")      # Create an LG node
+
 tv.add_child(samsung)    # Add Samsung as a child of TV
+
 tv.add_child(lg)        # Add LG as a child of TV
 
 print_tree(root)  # Print the entire tree structure
