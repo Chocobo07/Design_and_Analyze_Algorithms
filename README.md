@@ -138,7 +138,7 @@ A Circular Linked List is a variation of a linked list where:
 The last node points back to the first node instead of having a null reference.
 This creates a circular structure, where you can loop through the list continuously from any node.
 Circular linked lists can be singly or doubly linked, depending on whether each node contains one or two pointers (next and/or prev).
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 **Advantages:**
 Efficient circular traversal: You can easily traverse the list in a loop, which is useful in applications like round-robin scheduling.
@@ -222,7 +222,7 @@ cll.display()  # Output: Fool -> Manila Bay -> Feel so good -> None
 
 **Queue**
 A Queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means that the first element added to the queue will be the first one to be removed, similar to a queue in real life (like a line at a coffee shop).
-![alt text](image-2.png)
+![alt text](image-4.png)
 
 **Advantages:**
 Simple and efficient for managing sequential data.
