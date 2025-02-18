@@ -4,10 +4,15 @@
  📍Demo link: https://drive.google.com/drive/folders/1s6YPdAonncG7ARhXE9im1FLMfexw1cCk?usp=sharing
  📍How to compile:
    Step 1: Installation. Install the following libraries before starting.
+   
    Step 2: Install Python Extension.
+   
    Step 3: Clone the repository.
+   
    Step 4: Select Python file.
+   
    Step 5: Select Python Interpreter.
+   
    Step 6: Run the Python file.
  
 **Data Structured covered:**
