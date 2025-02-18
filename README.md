@@ -440,3 +440,313 @@ A Heap is a special type of binary tree that satisfies the heap property. There 
 Max Heap: The value of each node is greater than or equal to the values of its children. The largest value is at the root.
 Min Heap: The value of each node is less than or equal to the values of its children. The smallest value is at the root.
 ![alt text](image-6.png)
+
+**Advantages:**
+Efficient Insertion and Deletion: Insertion and deletion (extracting max or min) are done in O(log n) time.
+Balanced Structure: As a complete binary tree, heaps are balanced, ensuring efficient operations.
+**Disadvantages:**
+Not Efficient for Search: Searching for arbitrary elements is O(n) since there’s no ordering for arbitrary nodes.
+Limited Access: Only the root node can be accessed directly; other elements require traversal.
+
+**Code snippet:**
+import heapq
+
+class MinHeap:
+    def __init__(self):
+        self.heap = []  # Use a list to store heap elements
+
+    def push(self, item):
+        heapq.heappush(self.heap, item)  # Add to the heap, maintaining heap property
+
+    def pop(self):
+        if self.heap:
+            return heapq.heappop(self.heap)  # Remove and return the smallest item
+        else:
+            return None  # Or raise an exception
+
+    def peek(self):
+        if self.heap:
+            return self.heap[0]  # Return the smallest item (root)
+        else:
+            return None
+
+    def size(self):
+        return len(self.heap)
+
+    def is_empty(self):
+        return len(self.heap) == 0
+
+# Example usage (explained below):
+min_heap = MinHeap()
+min_heap.push(5)
+min_heap.push(1)
+min_heap.push(9)
+min_heap.push(2)
+
+print("Heap size:", min_heap.size())       # Output: Heap size: 4
+print("Smallest element:", min_heap.peek())  # Output: Smallest element: 1
+
+print("Is heap empty?", min_heap.is_empty())  # Output: Is heap empty? False
+
+print("Popped element:", min_heap.pop())     # Output: Popped element: 1
+print("Popped element:", min_heap.pop())     # Output: Popped element: 2
+print("Is heap empty?", min_heap.is_empty())  # Output: Is heap empty? False
+print("Popped element:", min_heap.pop())     # Output: Popped element: 5
+
+
+# Explanation of the example usage:
+
+# 1. min_heap = MinHeap():
+#    - Creates an empty min-heap. self.heap is initialized as [].
+
+# 2. min_heap.push(5), min_heap.push(1), min_heap.push(9), min_heap.push(2):
+#    - Adds elements to the heap.  The `heapq.heappush()` function ensures that the heap property is maintained.
+#    - After these pushes, the heap (self.heap) conceptually looks like this (the actual list representation might be slightly different due to the heap structure):
+#
+#          1
+#        /   \
+#       2     9
+#      /
+#     5
+
+# 3. print("Heap size:", min_heap.size()):
+#    - Prints the number of elements in the heap (4).
+
+# 4. print("Smallest element:", min_heap.peek()):
+#    - Prints the smallest element (the root), which is 1.
+
+# 5. print("Is heap empty?", min_heap.is_empty()):
+#    - Checks if the heap is empty (it's not).
+
+# 6. print("Popped element:", min_heap.pop()):
+#    - Removes and returns the smallest element (1).
+#    - The heap is now:
+#
+#          2
+#        /   \
+#       5     9
+
+# 7. print("Popped element:", min_heap.pop()):
+#    - Removes and returns the smallest element (2).
+#    - The heap is now:
+#
+#          5
+#           \
+#            9
+
+# 8. print("Is heap empty?", min_heap.is_empty()):
+#    - Checks if the heap is empty (it's not).
+
+# 9. print("Popped element:", min_heap.pop()):
+#    - Removes and returns the smallest element (5).
+#    - The heap is now:
+#
+#          9
+
+# ... (and so on)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**Graph**
+A Graph is a non-linear data structure used to represent relationships between objects. It consists of:
+
+Vertices (Nodes): The entities or points in the graph.
+Edges (Links): The connections between the vertices.
+Graphs can represent complex structures like social networks, transportation systems, or computer networks.
+![alt text](image-7.png)
+
+**Advantages:**
+Versatile Representation: Graphs can model a wide variety of real-world systems.
+Efficient Search: Algorithms like BFS and DFS allow quick searches and analysis of graph structures.
+**Disadvantages:**
+Complexity: Graphs can become complex and difficult to manage with many vertices and edges.
+Memory Usage: Representing large graphs can require significant memory (especially with adjacency matrices).
+
+**Code snippet:**
+class Graph:
+    def __init__(self, adjacency_list=None):  # Corrected typo: adjency_list to adjacency_list
+        if adjacency_list is None:
+            self.adjacency_list = {}  # Dictionary to store adjacency list
+        else:
+            self.adjacency_list = adjacency_list
+
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []  # Initialize empty list of neighbors
+
+    def add_edge(self, vertex1, vertex2):
+        self.adjacency_list[vertex1].append(vertex2)  # Add directed edge from vertex1 to vertex2
+        # For an undirected graph, add the reverse edge as well:
+        # self.adjacency_list[vertex2].append(vertex1)  # If the graph is undirected
+
+    def get_neighbors(self, vertex):
+        return self.adjacency_list.get(vertex, [])  # Return empty list if no neighbors
+
+    def print_graph(self):
+        for vertex in self.adjacency_list:
+            neighbors = ", ".join(map(str, self.adjacency_list[vertex]))  # Convert neighbors to strings
+            print(f"{vertex}: {neighbors}")
+
+
+# Example usage (explained below):
+graph = Graph()
+graph.add_vertex("Spongebob")
+graph.add_vertex("Patrick")
+graph.add_vertex("Squidward")
+
+graph.add_edge("Spongebob", "Patrick")
+graph.add_edge("Spongebob", "Squidward")
+graph.add_edge("Patrick", "Squidward")
+
+graph.print_graph()
+# Output:
+# Spongebob: Patrick, Squidward
+# Patrick: Squidward
+# Squidward: 
+
+print(graph.get_neighbors("Spongebob"))  # Output: ['Patrick', 'Squidward']
+print(graph.get_neighbors("Plankton"))  # Output: [] (empty list, no neighbors)
+
+
+
+# Explanation of the example usage:
+
+# 1. graph = Graph():
+#    - Creates an empty graph object.  self.adjacency_list is initialized as an empty dictionary {}.
+
+# 2. graph.add_vertex("Spongebob"), graph.add_vertex("Patrick"), graph.add_vertex("Squidward"):
+#    - Adds the vertices "Spongebob", "Patrick", and "Squidward" to the graph.
+#    - The adjacency list now looks like this:
+#      {
+#          "Spongebob": [],
+#          "Patrick": [],
+#          "Squidward": []
+#      }
+
+# 3. graph.add_edge("Spongebob", "Patrick"):
+#    - Adds a directed edge from "Spongebob" to "Patrick".
+#    - The adjacency list becomes:
+#      {
+#          "Spongebob": ["Patrick"],
+#          "Patrick": [],
+#          "Squidward": []
+#      }
+
+# 4. graph.add_edge("Spongebob", "Squidward"):
+#    - Adds a directed edge from "Spongebob" to "Squidward".
+#    - The adjacency list becomes:
+#      {
+#          "Spongebob": ["Patrick", "Squidward"],
+#          "Patrick": [],
+#          "Squidward": []
+#      }
+
+# 5. graph.add_edge("Patrick", "Squidward"):
+#    - Adds a directed edge from "Patrick" to "Squidward".
+#    - The adjacency list becomes:
+#      {
+#          "Spongebob": ["Patrick", "Squidward"],
+#          "Patrick": ["Squidward"],
+#          "Squidward": []
+#      }
+
+# 6. graph.print_graph():
+#    - Prints the adjacency list in a readable format.
+
+# 7. print(graph.get_neighbors("Spongebob")):
+#    - Returns the list of neighbors of "Spongebob": ['Patrick', 'Squidward']
+
+# 8. print(graph.get_neighbors("Plankton")):
+#    - Returns an empty list [] because "Plankton" is not in the graph.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Tree**
+A Tree is a hierarchical data structure that consists of nodes connected by edges. It is used to represent hierarchical relationships, such as file systems, organization charts, or decision-making processes.
+
+**Basic Components of a Tree:**
+**Node:** An individual element in the tree that holds data.
+**Root:** The top node of the tree, from which all other nodes are descendants.
+**Parent:** A node that has one or more children.
+**Child:** A node that is a descendant of another node (parent).
+**Leaf:** A node with no children (end node).
+**Edge:** The connection between two nodes.
+**Subtree:** A tree formed by a node and its descendants.
+![alt text](image-8.png)
+
+**Advantages:**
+Efficient Search and Sort: Operations like search, insertion, and deletion are efficient, especially in balanced trees.
+Hierarchical Representation: Ideal for modeling hierarchical structures.
+Flexibility: Trees can represent a wide range of problems, from file systems to decision-making processes.
+**Disadvantages:**
+Complexity: Trees can be complex to implement and manage, especially when balancing is required.
+Memory Usage: Storing trees can require more memory than simpler data structures like arrays or lists.
+
+**Code snippet:**
+class TreeNode:
+    def __init__(self, data):
+        self.data = data      # Data stored in the node
+        self.children = []  # List to store child nodes (initially empty)
+
+    def add_child(self, child):
+        self.children.append(child)  # Add a child node to this node
+
+    def __str__(self):  # For easy printing of node data
+        return str(self.data)
+
+def print_tree(node, level=0):
+    print("  " * level + str(node.data))  # Print node data with indentation
+    for child in node.children:  # Recursively print each child's subtree
+        print_tree(child, level + 1)  # Increase indentation level for children
+
+# Example usage (explained below):
+root = TreeNode("Electronics")  # Create the root node
+
+laptop = TreeNode("Laptop")  # Create a Laptop node
+phone = TreeNode("Phone")    # Create a Phone node
+tv = TreeNode("TV")        # Create a TV node
+
+root.add_child(laptop)  # Add Laptop as a child of Electronics
+root.add_child(phone)    # Add Phone as a child of Electronics
+root.add_child(tv)        # Add TV as a child of Electronics
+
+dell = TreeNode("Dell")    # Create a Dell node
+hp = TreeNode("HP")      # Create an HP node
+laptop.add_child(dell)  # Add Dell as a child of Laptop
+laptop.add_child(hp)    # Add HP as a child of Laptop
+
+iphone = TreeNode("Iphone")  # Create an Iphone node
+android = TreeNode("Android")  # Create an Android node
+phone.add_child(iphone)  # Add Iphone as a child of Phone
+phone.add_child(android)  # Add Android as a child of Phone
+
+samsung = TreeNode("Samsung")  # Create a Samsung node
+lg = TreeNode("LG")      # Create an LG node
+tv.add_child(samsung)    # Add Samsung as a child of TV
+tv.add_child(lg)        # Add LG as a child of TV
+
+print_tree(root)  # Print the entire tree structure
+
+
+# Explanation of the example usage:
+
+# 1. root = TreeNode("Electronics"):
+#    - Creates the root node of the tree with data "Electronics".
+#    - This is the top-most node.
+
+# 2. laptop = TreeNode("Laptop"), phone = TreeNode("Phone"), tv = TreeNode("TV"):
+#    - Creates three nodes: "Laptop", "Phone", and "TV".  These are initially separate nodes.
+
+# 3. root.add_child(laptop), root.add_child(phone), root.add_child(tv):
+#    - Makes "Laptop", "Phone", and "TV" *children* of the "Electronics" node.
+#    - Now, "Electronics" is the parent of these three nodes.
+
+# 4. dell = TreeNode("Dell"), hp = TreeNode("HP"), laptop.add_child(dell), laptop.add_child(hp):
+#    - Creates "Dell" and "HP" nodes and makes them children of "Laptop".
+
+# 5. iphone = TreeNode("Iphone"), android = TreeNode("Android"), phone.add_child(iphone), phone.add_child(android):
+#    - Creates "Iphone" and "Android" nodes and makes them children of "Phone".
+
+# 6. samsung = TreeNode("Samsung"), lg = TreeNode("LG"), tv.add_child(samsung), tv.add_child(lg):
+#    - Creates "Samsung" and "LG" nodes and makes them children of "TV".
+
+# 7. print_tree(root):
+#    - Calls the `print_tree` function to display the tree structure.
+#    - The `print_tree` function recursively traverses the tree, printing each node's data with appropriate indentation to show the hierarchy.
