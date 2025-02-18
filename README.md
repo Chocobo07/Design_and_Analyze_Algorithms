@@ -138,7 +138,7 @@ A Circular Linked List is a variation of a linked list where:
 The last node points back to the first node instead of having a null reference.
 This creates a circular structure, where you can loop through the list continuously from any node.
 Circular linked lists can be singly or doubly linked, depending on whether each node contains one or two pointers (next and/or prev).
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 **Advantages:**
 Efficient circular traversal: You can easily traverse the list in a loop, which is useful in applications like round-robin scheduling.
@@ -222,7 +222,7 @@ cll.display()  # Output: Fool -> Manila Bay -> Feel so good -> None
 
 **Queue**
 A Queue is a linear data structure that follows the First In, First Out (FIFO) principle. This means that the first element added to the queue will be the first one to be removed, similar to a queue in real life (like a line at a coffee shop).
-![alt text](image-2.png)
+![alt text](image-4.png)
 
 **Advantages:**
 Simple and efficient for managing sequential data.
@@ -330,3 +330,113 @@ A line of people ordering in a coffee shop, The first one in the line will be th
 **Stack**
 A Stack is a linear data structure that follows the Last In, First Out (LIFO) principle. This means the last element added to the stack is the first one to be removed, similar to a stack of plates where you take the top plate first.
 ![alt text](image-2.png)
+
+**Advantages:**
+Simple and efficient for operations like adding/removing from the top.
+Useful for problems that need to track the order of operations in a reversible manner.
+**Disadvantages:**
+Limited access: You can only access the top element, not the ones below it.
+Fixed size (in some implementations), leading to overflow when the stack is full.
+
+**Code snippet:**
+class Stack:
+    def __init__(self):
+        self.items = []  # Use a list to store stack elements
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):  # Corrected: parameter name should be 'item', not 'items'
+        self.items.append(item)  # Add to the top
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()  # Remove and return the top element
+        else:
+            return None  # Or raise an exception
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]  # Return the top element without removing it
+        else:
+            return None
+
+    def size(self):
+        return len(self.items)
+
+    def view_stack(self):
+        return self.items  # Return the stack as a list
+
+
+# Example usage (explained below):
+stack = Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+
+print("Current Stack:", stack.view_stack())  # Output: Current Stack: [1, 2, 3]
+
+print("Stack size:", stack.size())  # Output: Stack size: 3
+print("Top element:", stack.peek())  # Output: Top element: 3
+
+print("Popped element:", stack.pop())  # Output: Popped element: 3
+print("Popped element:", stack.pop())  # Output: Popped element: 2
+
+print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? False
+
+print("Popped element:", stack.pop())  # Output: Popped element: 1
+print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? True
+
+print("Popped element:", stack.pop())  # Output: Popped element: None
+
+
+# Explanation of the example usage:
+
+# 1. stack = Stack():
+#    - Creates an empty stack. self.items is initialized as an empty list [].
+
+# 2. stack.push(1), stack.push(2), stack.push(3):
+#    - Adds elements to the *top* of the stack.
+#    - The stack now looks like this: [1, 2, 3] (3 is at the top).
+
+# 3. print("Current Stack:", stack.view_stack()):
+#    - Prints the current state of the stack.
+
+# 4. print("Stack size:", stack.size()):
+#    - Prints the number of elements in the stack (3 at this point).
+
+# 5. print("Top element:", stack.peek()):
+#    - Prints the element at the top of the stack *without* removing it (3).
+
+# 6. print("Popped element:", stack.pop()):
+#    - Removes and returns the element at the *top* of the stack (3).
+#    - The stack is now: [1, 2]
+
+# 7. print("Popped element:", stack.pop()):
+#    - Removes and returns the element at the top of the stack (2).
+#    - The stack is now: [1]
+
+# 8. print("Is stack empty?", stack.is_empty()):
+#    - Checks if the stack is empty (it's not, it has one element).
+
+# 9. print("Popped element:", stack.pop()):
+#    - Removes and returns the element at the top of the stack (1).
+#    - The stack is now empty: []
+
+# 10. print("Is stack empty?", stack.is_empty()):
+#     - Checks if the stack is empty (it is now).
+
+# 11. print("Popped element:", stack.pop()):
+#     - Tries to pop from an empty stack. Returns None.
+
+**Use case:**
+A stack of books, to get the book at the bottom, you need to remove the books at the top first, otherwise the stack will collapse.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**Heap**
+A Heap is a special type of binary tree that satisfies the heap property. There are two main types of heaps:
+
+Max Heap: The value of each node is greater than or equal to the values of its children. The largest value is at the root.
+Min Heap: The value of each node is less than or equal to the values of its children. The smallest value is at the root.
+![alt text](image-6.png)
